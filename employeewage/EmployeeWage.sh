@@ -8,6 +8,7 @@ SALARYPERHOUR=20
 HOURPERDAY=8
 ISPARTTIME=0
 ISFULLTIME=1
+WORKINGDAYS=20
 
 #RANDOM FUNCTION
 randomCheck=$((RANDOM%2))
@@ -28,15 +29,33 @@ else
 	salary=0
 fi
 
-#ADDING PART TIME EMPLOYEE WAGE USING CASEsxY
-EmpCheck=$((RANDOM%2))
-case  $EmpCheck in
+#ADDING PART TIME EMPLOYEE WAGE USING CASE
+empCheck=$((RANDOM%2))
+case  $empCheck in
 $ISFULLTIME)
-	EmpHour=8
+	empHour=8
 	;;
 $ISPARTTIME)
-	EmpHour=4
+	empHour=4
 	;;
 esac
+
+#SALARY OF A MONTH
+for (( day=1; day<=$WORKINGDAYS; day++ ))
+do
+	empCheck=$((RANDOM%2))
+	case $empCheck in
+	$ISFULLTIME)
+		empHour=8
+		;;
+	$ISPARTTIME)
+		empHour=4
+		;;
+	esac
+	salary=$(($empHour*$SALARYPERHOUR))
+	totalSalary=$(($totalSalary+$salary))
+done
+
+
 
 
