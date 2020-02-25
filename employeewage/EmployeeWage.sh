@@ -9,6 +9,11 @@ HOURPERDAY=8
 ISPARTTIME=0
 ISFULLTIME=1
 WORKINGDAYS=20
+TOTALHOURSINMONTH=100
+
+#VARIABLES
+totalEmpHour=0
+totalWorkingDays=0
 
 #RANDOM FUNCTION
 randomCheck=$((RANDOM%2))
@@ -56,6 +61,21 @@ do
 	totalSalary=$(($totalSalary+$salary))
 done
 
+#SALARY OF A MONTH USING WHILE
+while (( $totalEmpHour<$TOTALHOURSINMONTH && $totalWorkingDays<$WORKINGDAYS ))
+do
+	empCheck=$((RANDOM%2))
+   case $empCheck in
+   $ISFULLTIME)
+      empHour=8
+      ;;
+   $ISPARTTIME)
+      empHour=4
+      ;;
+   esac
+   totalEmpHour=$(($totalEmpHour+$empHour))
+done
+totalSalary=$(($totalEmpHour*$SALARYPERHOUR))
 
 
 
