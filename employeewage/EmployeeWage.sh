@@ -48,13 +48,16 @@ function getWorkHours(){
       ;;
    esac
 }
-
+ 
 #SALARY OF A MONTH USING WHILE
+declare -a salaryPerDay
 while (( $totalEmpHour<$TOTALHOURSINMONTH && $totalWorkingDays<$WORKINGDAYS ))
 do
-   ((totalWorkingDays++))
    empHour=$( getWorkHours )
    totalEmpHour=$(($totalEmpHour+$empHour))
+	salary=$(( $empHour*$SALARYPERHOUR))
+	salaryPerDay[$totalWorkingDays]=$salary
+	((totalWorkingDays++))
 done
 totalSalary=$(($totalEmpHour*$SALARYPERHOUR))
 
