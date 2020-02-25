@@ -51,15 +51,19 @@ function getWorkHours(){
  
 #SALARY OF A MONTH USING WHILE
 declare -a salaryPerDay
+declare -A dayAndSalary
 while (( $totalEmpHour<$TOTALHOURSINMONTH && $totalWorkingDays<$WORKINGDAYS ))
 do
    empHour=$( getWorkHours )
    totalEmpHour=$(($totalEmpHour+$empHour))
-	salary=$(( $empHour*$SALARYPERHOUR))
-	salaryPerDay[$totalWorkingDays]=$salary
-	((totalWorkingDays++))
+   salary=$(($empHour*$SALARYPERHOUR))
+   salaryPerDay[$totalWorkingDays]=$salary
+   ((totalWorkingDays++))
 done
 totalSalary=$(($totalEmpHour*$SALARYPERHOUR))
+
+echo ${!salaryPerDay[@]}
+echo ${salaryPerDay[@]}
 
 
 
