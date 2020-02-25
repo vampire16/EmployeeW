@@ -34,36 +34,10 @@ else
 	salary=0
 fi
 
-#ADDING PART TIME EMPLOYEE WAGE USING CASE
-empCheck=$((RANDOM%2))
-case  $empCheck in
-$ISFULLTIME)
-	empHour=8
-	;;
-$ISPARTTIME)
-	empHour=4
-	;;
-esac
-
-#SALARY OF A MONTH
-for (( day=1; day<=$WORKINGDAYS; day++ ))
-do
-	empCheck=$((RANDOM%2))
-	case $empCheck in
-	$ISFULLTIME)
-		empHour=8
-		;;
-	$ISPARTTIME)
-		empHour=4
-		;;
-	esac
-	salary=$(($empHour*$SALARYPERHOUR))
-	totalSalary=$(($totalSalary+$salary))
-done
-
 #SALARY OF A MONTH USING WHILE
 while (( $totalEmpHour<$TOTALHOURSINMONTH && $totalWorkingDays<$WORKINGDAYS ))
 do
+	((totalWorkingDays++))
 	empCheck=$((RANDOM%2))
    case $empCheck in
    $ISFULLTIME)
