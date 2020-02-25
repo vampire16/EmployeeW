@@ -28,16 +28,15 @@ else
 	salary=0
 fi
 
-#ADDING PART TIME EMPLOYEE WAGE
-
+#ADDING PART TIME EMPLOYEE WAGE USING CASEsxY
 EmpCheck=$((RANDOM%2))
-
-if (( $EmpCheck == $ISFULLTIME ))
-then
+case  $EmpCheck in
+$ISFULLTIME)
 	EmpHour=8
-elif (( $EmpCheck == $ISPARTTIME ))
-then
+	;;
+$ISPARTTIME)
 	EmpHour=4
-fi
+	;;
+esac
 
 
