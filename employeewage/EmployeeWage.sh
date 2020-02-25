@@ -6,6 +6,8 @@ echo "Welcome"
 ISPRESENT=1
 SALARYPERHOUR=20
 HOURPERDAY=8
+ISPARTTIME=0
+ISFULLTIME=1
 
 #RANDOM FUNCTION
 randomCheck=$((RANDOM%2))
@@ -25,3 +27,17 @@ then
 else
 	salary=0
 fi
+
+#ADDING PART TIME EMPLOYEE WAGE
+
+EmpCheck=$((RANDOM%2))
+
+if (( $EmpCheck == $ISFULLTIME ))
+then
+	EmpHour=8
+elif (( $EmpCheck == $ISPARTTIME ))
+then
+	EmpHour=4
+fi
+
+
