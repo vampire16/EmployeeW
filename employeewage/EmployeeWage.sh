@@ -50,8 +50,7 @@ function getWorkHours(){
 }
  
 #SALARY OF A MONTH USING WHILE
-declare -a salaryPerDay
-declare -A dayAndSalary
+declare -A salaryPerDay
 while (( $totalEmpHour<$TOTALHOURSINMONTH && $totalWorkingDays<$WORKINGDAYS ))
 do
    empHour=$( getWorkHours )
@@ -62,8 +61,11 @@ do
 done
 totalSalary=$(($totalEmpHour*$SALARYPERHOUR))
 
-echo ${!salaryPerDay[@]}
-echo ${salaryPerDay[@]}
-
+#PRINTING DAY AND SALARY
+for (( index=0; index<=${#salaryPerDay[@]}; index++ ))
+do
+	position=$(($index+1))
+	echo "$position : ${salaryPerDay[$index]}"
+done
 
 
