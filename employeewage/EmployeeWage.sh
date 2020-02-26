@@ -64,8 +64,8 @@ totalSalary=$(($totalEmpHour*$SALARYPERHOUR))
 #PRINTING DAY AND SALARY
 for (( index=0; index<=${#salaryPerDay[@]}; index++ ))
 do
-	position=$(($index+1))
-	echo "$position : ${salaryPerDay[$index]}"
+   position=$(($index+1))
+   echo "$position : ${salaryPerDay[$index]}"
 done
 
 
